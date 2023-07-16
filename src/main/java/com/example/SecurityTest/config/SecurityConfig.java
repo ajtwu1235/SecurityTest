@@ -19,15 +19,11 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity // Spring Security 설정 클래스로 등록
 @RequiredArgsConstructor
 public class SecurityConfig {
-
-
   private final UserService userService;
   /**
    * 비밀번호 암호화를 위한 Bean
    * @return
    */
-
-
   @Bean
   public BCryptPasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
@@ -36,6 +32,7 @@ public class SecurityConfig {
   @Bean
   public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
+    // csrf x
     http.csrf(csrf->csrf.disable());
 
     return http.authorizeHttpRequests(auth->
